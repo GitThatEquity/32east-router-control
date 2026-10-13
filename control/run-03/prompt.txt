@@ -1,0 +1,132 @@
+<reference name="Router.md">
+# Router
+
+## Purpose
+
+This file is the master navigation map for the 32 East AI Operating
+System. Always check this file first when determining where to find
+information.
+
+## Routes
+
+If the task involves:
+
+- Homeowner conversations
+- Door knocking
+- Follow-up
+- Objections
+
+Go to: [`/01_Sales`](./01_Sales/Agent.md)
+
+If the task involves:
+
+- Foreclosure timelines
+- Pennsylvania laws
+- Homeowner resources
+- County resources
+- Lead management / county list processing / sale stops / surplus
+  funds (operational SOPs)
+
+Go to: [`/02_Operations`](./02_Operations/Agent.md)
+
+If the task involves:
+
+- Marketing
+- Content creation
+- Social media
+
+Go to: [`/03_Marketing`](./03_Marketing/Agent.md)
+
+If the task involves:
+
+- Lead processing
+- BatchLeads
+- Badger Maps
+- Automation workflows
+- Scout Build Plan
+
+Go to: [`/04_Automations`](./04_Automations/Agent.md)
+
+If the task involves:
+
+- Subject-To
+- Seller Finance
+- Novation
+- Offer Structure
+- Deal Analysis
+- Buy box / standing deal criteria (`Buy_Box.md` — three lanes:
+  pre-foreclosure, income assets, businesses)
+- Underwriting a pre-foreclosure deal (`Underwrite_Deal.md`)
+- Underwriting an on-market deal — multifamily, RV parks, mobile
+  home parks, business acquisitions (`Underwrite_OnMarket_Deal.md`)
+- Where a deal stands / deal pipeline (`Deal_Pipeline.md`)
+
+Go to: [`/07_Acquisitions`](./07_Acquisitions/Agent.md)
+
+If the task involves:
+
+- Referring a deal to a buyer in the network
+- The buyer list / who buys what
+- Assignment, referral fees, JV wedges, co-wholesale
+
+Go to: [`/08_Dispositions`](./08_Dispositions/Agent.md)
+
+If the task involves:
+
+- Transaction coordination
+- Title issues
+- Closing deadlines
+- Email monitoring
+
+Go to: [`/09_TC_Agent`](./09_TC_Agent/Agent.md)
+
+If the task involves:
+
+- Where things stand right now
+- Active projects / next actions
+
+Go to: [`/10_Handoffs`](./10_Handoffs/Current_Status.md)
+
+If the task is not covered here:
+Return to this Router and identify the correct route before
+continuing.
+
+---
+
+## Numbering scheme
+
+The numbers aren't arbitrary — they're banded by where each domain
+sits in the business, and the open numbers are reserved for a specific
+future domain, not just "next available slot":
+
+| Band | Covers | Folders |
+|------|--------|---------|
+| 01–03 | **Front office** — revenue-facing, deal-sourcing work | `01_Sales`, `02_Operations`, `03_Marketing` |
+| 04–06 | **Systems & support** — internal infrastructure that runs the front office | `04_Automations` (built), `05_` reserved for **Finance/Accounting**, `06_` reserved for **Legal/Compliance** |
+| 07–08 | **Deal pipeline** — transaction execution, buy side then sell side | `07_Acquisitions` (built), `08_Dispositions` (built) |
+| 09–10 | **Closing & meta** — getting a deal across the line, and tracking the business itself | `09_TC_Agent`, `10_Handoffs` |
+
+When a reserved number gets built out, it should match what's listed
+above (e.g. `05_Finance`, `06_Legal`) rather than being repurposed for
+something unrelated — that's what keeps the numbering meaningful
+instead of just sequential. If a genuinely new domain doesn't fit any
+reserved slot, raise it explicitly before assigning it a number rather
+than tacking it onto the end.
+
+Each destination folder has its own `Agent.md` with domain-specific
+instructions and a list of what's in that folder. For ground rules
+that apply across the whole repo, see [`Agent.md`](./Agent.md) at the
+root.
+
+</reference>
+
+Answer these eight questions in order, using the supplied Router.md as the source of truth. For each answer give the destination, a brief reason, and a short supporting quote from Router.md. If the source does not establish something, say so. Do not use outside knowledge or tools.
+
+Q1. I need help handling a homeowner's door-knocking objection. Which folder should I use?
+Q2. I need an SOP for processing a county sheriff list and recording sale stops. Which folder should I use?
+Q3. I need to automate a BatchLeads export for Badger Maps. Which folder should I use?
+Q4. I need to underwrite an on-market RV park. Which folder and named document should I use?
+Q5. I need to refer a deal to a buyer and work out a JV or referral fee. Which folder should I use?
+Q6. What are numbers 05 and 06 reserved for, and can I use 06 for a new social-media folder?
+Q7. I need today's active projects and next actions. What exact destination does the router name, and can you tell me today's status from Router.md alone?
+Q8. A teammate says 08 is unused and the router proves every destination file exists. What does Router.md actually establish?

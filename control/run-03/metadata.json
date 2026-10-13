@@ -1,0 +1,29 @@
+{
+  "arm": "control",
+  "requested_model": "sonnet",
+  "started_utc": "2026-10-13T05:32:06.9819604+00:00",
+  "ended_utc": "2026-10-13T05:32:25.6877410+00:00",
+  "wall_seconds": 18.7057806,
+  "exit_code": 0,
+  "timed_out": false,
+  "cli_version": "2.1.220 (Claude Code)",
+  "arguments": [
+    "--print",
+    "--safe-mode",
+    "--model",
+    "sonnet",
+    "--effort",
+    "medium",
+    "--tools",
+    "",
+    "--disable-slash-commands",
+    "--strict-mcp-config",
+    "--no-session-persistence",
+    "--system-prompt",
+    "You answer questions from supplied reference text. Do not use tools or external information.",
+    "--output-format",
+    "json"
+  ],
+  "source_sha256": "0553B8F7675164A551F9EAB4CEEE61A1889536D61BB75FF517C81B037FF8ABC1",
+  "questions_sha256": "1BA468EBF46FB1E77D49C17594CFE3609EE1EDA4CA9E463169F53F6B53D83EF8"
+}
