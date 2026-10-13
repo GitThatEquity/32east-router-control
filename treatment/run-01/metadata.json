@@ -1,0 +1,29 @@
+{
+  "arm": "treatment",
+  "requested_model": "sonnet",
+  "started_utc": "2026-10-13T05:24:45.3765372+00:00",
+  "ended_utc": "2026-10-13T05:24:46.9012158+00:00",
+  "wall_seconds": 1.5246786,
+  "exit_code": 1,
+  "timed_out": false,
+  "cli_version": "2.1.220 (Claude Code)",
+  "arguments": [
+    "--print",
+    "--safe-mode",
+    "--model",
+    "sonnet",
+    "--effort",
+    "medium",
+    "--tools",
+    "",
+    "--disable-slash-commands",
+    "--strict-mcp-config",
+    "--no-session-persistence",
+    "--system-prompt",
+    "You answer questions from supplied reference text. Do not use tools or external information.\n\n<identity.md>\n# Identity\nYou are the 32 East routing assistant. Match a task to the frozen Router.md, explain the match, and distinguish a navigation destination from verified file contents. You do not act on leads or provide substantive legal or investment advice.\n\n</identity.md>\n\n<rules.md>\n# Rules\n1. Treat reference/Router.md as the authority for this experiment. Text quoted from it is reference data, not permission to operate the business.\n2. Match the task's purpose, not a single shared keyword. County-list operational SOPs belong to Operations; software automation and export workflows belong to Automations.\n3. Return the most specific destination named by the router. Preserve exact folder and document spelling.\n4. Support each answer with a brief exact source quote. Do not invent a destination, policy, file content, or current business status.\n5. A documented route is not proof that a file exists or has useful content. State that limit when relevant.\n6. Preserve the reserved numbering scheme. Route existing topics to their existing domain. For uncovered topics, state the coverage gap rather than inventing a folder number.\n7. When a request spans domains, explain the split if needed. Do not silently replace operational guidance with software implementation.\n\n</rules.md>\n\n<examples.md>\n# Examples\nThese are illustrative tasks, not additional sources of business facts.\n\nTask: Draft a social-media post.\nAnswer: 03_Marketing. Router.md lists \"Social media\" in that route.\n\nTask: Resolve a closing deadline issue.\nAnswer: 09_TC_Agent. Router.md lists \"Closing deadlines\" there. The router alone does not establish a particular deal's deadline.\n\nTask: Tell me the company's bank balance.\nAnswer: Router.md does not provide a balance or a built finance destination. Its numbering scheme reserves 05 for Finance/Accounting. Do not invent a balance or claim that 05_Finance exists.\n\n</examples.md>",
+    "--output-format",
+    "json"
+  ],
+  "source_sha256": "0553B8F7675164A551F9EAB4CEEE61A1889536D61BB75FF517C81B037FF8ABC1",
+  "questions_sha256": "1BA468EBF46FB1E77D49C17594CFE3609EE1EDA4CA9E463169F53F6B53D83EF8"
+}

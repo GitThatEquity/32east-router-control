@@ -1,7 +1,8 @@
 param(
   [ValidateSet('control','treatment')][string]$Arm = 'control',
   [string]$Model = 'sonnet',
-  [string]$Attempt = 'run-01'
+  [string]$Attempt = 'run-01',
+  [int]$TimeoutSeconds = 180
 )
 $ErrorActionPreference = 'Stop'
 $root = $PSScriptRoot
@@ -38,12 +39,13 @@ $outTask = $process.StandardOutput.BaseStream.CopyToAsync($outFile)
 $errTask = $process.StandardError.BaseStream.CopyToAsync($errFile)
 $process.StandardInput.Write($prompt)
 $process.StandardInput.Close()
-$process.WaitForExit()
-$outTask.GetAwaiter().GetResult()
-$errTask.GetAwaiter().GetResult()
+$timedOut = -not $process.WaitForExit($TimeoutSeconds * 1000)
+if ($timedOut) { $process.Kill($true); $process.WaitForExit() }
+$outTask.GetAwaiter().GetResult() | Out-Null
+$errTask.GetAwaiter().GetResult() | Out-Null
 $outFile.Dispose()
 $errFile.Dispose()
 $ended = [DateTimeOffset]::UtcNow
-$metadata = [ordered]@{ arm=$Arm; requested_model=$Model; started_utc=$started.ToString('o'); ended_utc=$ended.ToString('o'); wall_seconds=($ended-$started).TotalSeconds; exit_code=$process.ExitCode; cli_version=(& claude --version); arguments=$cliArgs; source_sha256=(Get-FileHash -LiteralPath (Join-Path $root 'reference/Router.md')).Hash; questions_sha256=(Get-FileHash -LiteralPath (Join-Path $root 'prompts/questions.txt')).Hash }
+$metadata = [ordered]@{ arm=$Arm; requested_model=$Model; started_utc=$started.ToString('o'); ended_utc=$ended.ToString('o'); wall_seconds=($ended-$started).TotalSeconds; exit_code=$process.ExitCode; timed_out=$timedOut; cli_version=(& claude --version); arguments=$cliArgs; source_sha256=(Get-FileHash -LiteralPath (Join-Path $root 'reference/Router.md')).Hash; questions_sha256=(Get-FileHash -LiteralPath (Join-Path $root 'prompts/questions.txt')).Hash }
 $metadata | ConvertTo-Json -Depth 10 | Set-Content -LiteralPath (Join-Path $dest 'metadata.json') -Encoding utf8
 Write-Output "$Arm/$Attempt saved; exit=$($process.ExitCode); seconds=$([math]::Round(($ended-$started).TotalSeconds,2))"
