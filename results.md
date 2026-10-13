@@ -1,24 +1,54 @@
-# Results — execution blocked, no comparison yet
+# Results — accuracy tied; treatment shorter, with an attribution flaw
 
-The questions were committed before both attempts, followed by a commit freezing the specialist folder. No successful model answers have been obtained. There is no evidence yet that the folder improves routing.
+Both arms scored **8/8** against the preregistered all-or-nothing answer criteria: eight accuracy ties, zero wins, and zero losses for the folder. This test does not demonstrate an accuracy advantage over supplying Router.md with a clear prompt.
 
-The sandboxed initial control attempt stalled with empty output and was interrupted. The network-enabled control retry returned an authentic provider error: "Failed to authenticate: OAuth session expired and could not be refreshed". Its raw stdout, stderr, exact prompts, and metadata are preserved in control/run-02. A signed-in status check did not guarantee working authentication.
+The most surprising result: treatment got Q8 right but quoted its own folder rule alongside Router.md evidence, despite being asked for supporting quotes from Router.md.
 
-The network-enabled treatment attempt also failed before inference; its raw output and metadata are preserved in treatment/run-01. These are execution records, not successful experimental transcripts.
+## Successful comparison
 
-| Question | Control accuracy | Treatment accuracy | Outcome |
-|---|---|---|---|
-| Q1 | Not evaluated | Not evaluated | Pending |
-| Q2 | Not evaluated | Not evaluated | Pending |
-| Q3 | Not evaluated | Not evaluated | Pending |
-| Q4 | Not evaluated | Not evaluated | Pending |
-| Q5 | Not evaluated | Not evaluated | Pending |
-| Q6 | Not evaluated | Not evaluated | Pending |
-| Q7 | Not evaluated | Not evaluated | Pending |
-| Q8 | Not evaluated | Not evaluated | Pending |
+Control: control/run-03. Treatment: treatment/run-02. Both raw outputs report the main answer model `claude-sonnet-5`, Claude Code 2.1.220, medium effort, one response turn, no web calls, and no permission denials. Control requested the alias `sonnet`; treatment explicitly requested the resolved ID. Both also report auxiliary `claude-haiku-4-5-20251001` usage from the CLI, so this was not a pure single-model API execution. The main answer model matched and both used the same CLI.
 
-An authentication failure is neither an incorrect answer nor a tie. Runtime on failed attempts does not measure answer latency. Token counts of zero do not measure task efficiency. No folder changes have been made in response to answer performance because no answers exist. The runner was given a timeout after the initial stall; this does not change the experimental prompts.
+User prompt hashes match exactly. Both received the same frozen source and questions in the same order. Only treatment's system context added identity.md, rules.md, and examples.md. Neither received the answer key. Successful raw responses were committed at 6a89d26 before this grading analysis. Exact prompts, raw stdout/stderr, and metadata remain unedited.
 
-## Remaining work
+| Question | Control | Treatment | Accuracy outcome | Review finding |
+|---|---|---|---|---|
+| Q1 | 1/1 | 1/1 | Tie | Both route objections to 01_Sales. |
+| Q2 | 1/1 | 1/1 | Tie | Both route county-list and sale-stop SOPs to 02_Operations. |
+| Q3 | 1/1 | 1/1 | Tie | Both route export automation to 04_Automations. |
+| Q4 | 1/1 | 1/1 | Tie | Both name 07_Acquisitions and Underwrite_OnMarket_Deal.md. |
+| Q5 | 1/1 | 1/1 | Tie | Both route buyer referrals and fees to 08_Dispositions. |
+| Q6 | 1/1 | 1/1 | Tie | Both preserve 05/06 reservations and route social media to 03_Marketing. |
+| Q7 | 1/1 | 1/1 | Tie | Both name Current_Status.md and decline to invent today's status. |
+| Q8 | 1/1 | 1/1 | Tie | Both identify 08 as documented built and distinguish routing from verified existence. Treatment additionally quotes rules.md for the limitation. |
 
-Refresh Claude Code authentication with `claude auth login`. Then run both arms with new attempt names, preserve all previous attempts, and confirm the resolved model ID matches in both successful outputs. If availability causes the alias to resolve differently, retain those attempts and repeat with one exact model ID. Grade Q1–Q8 against questions.md and replace pending cells with every win, tie, and loss. Report citations, unsupported claims, elapsed time, and token costs separately. Retain this execution history. Commit the raw transcripts before publishing; do not submit this pending results file as a completed comparison.
+Citation quality is a preregistered secondary measure, not part of the binary accuracy key. Q8 is a treatment loss on source attribution; that does not retroactively change the accuracy rubric. Both arms flatten or abbreviate passages inside quotation marks, so their quotations are excerpts with normalized formatting rather than byte-exact source transcriptions. No unsupported destination or current-status claim was identified in either answer.
+
+## Measured effort
+
+| Measure | Control | Treatment |
+|---|---:|---:|
+| External wall time, seconds | 18.71 | 14.29 |
+| Main-model uncached input tokens | 1 | 1 |
+| Main-model cache creation input tokens | 1,974 | 2,606 |
+| Main-model cache read input tokens | 0 | 0 |
+| Main-model output tokens | 1,801 | 1,204 |
+| Answer characters | 4,595 | 3,059 |
+| CLI-reported total cost, USD | 0.040756 | 0.035588 |
+
+Treatment added 632 input tokens, an overhead loss, and emitted 597 fewer output tokens (about 33% fewer). It finished 4.41 seconds sooner in this pair. These are observations from one pair, not replicated efficiency claims. Reported cost includes auxiliary-model usage and is not a claim about subscription billing. Provider duration fields differ from external wall time; all are preserved raw, and this table uses the runner's timestamps for elapsed time.
+
+The common prompt already requested destinations, reasons, source quotes, and uncertainty; that may help explain the accuracy tie. This is an interpretation, not an isolated causal finding.
+
+## Changes and limits
+
+No post-test folder revision has been made, preserving the tested instructions for reproduction. A future rule should explicitly separate Router.md quotations from behavioral instructions, but that proposed revision is untested. This experiment revealed no accuracy problem that justifies adding more instructions.
+
+This is one successful pair on eight authored questions; no unwritten holdout was tested and no general advantage is established. Both arms had source access, so this measures the incremental instructions. The treatment was a system-context bundle in Claude Code, rather than an upload to Claude web Projects. The raw metadata preserves the actual CLI configuration.
+
+Questions and expected answers were committed first at 8b8e782; specialist instructions and the initial runner were frozen next at 300ba5a. Router.md already existed and was read before question design. Do not imply the original router was authored after the questions.
+
+## Execution history
+
+The sandboxed control/run-01 stalled and was interrupted with empty raw output retained. A separate diagnostic pipeline likewise returned no output and was interrupted. Network-enabled control/run-02 and treatment/run-01 returned "Failed to authenticate: OAuth session expired and could not be refreshed" before inference. After login refresh, control/run-03 and treatment/run-02 succeeded. Every saved attempt remains committed. Authentication failures are execution failures, not wrong answers or ties. The runner received a timeout after the initial stall; prompt construction did not change.
+
+The folder did not improve accuracy on these questions. It produced a shorter answer at lower reported token cost in this pair, added input overhead, and introduced a source-attribution flaw. Further testing is required to claim a general advantage.

@@ -13,8 +13,8 @@ Control receives the reference and question prompt with a minimal common system 
 Requires PowerShell 7 and an authenticated Claude Code installation. From this repository:
 
 ```powershell
-./run.ps1 -Arm control -Model sonnet -Attempt rerun-01
-./run.ps1 -Arm treatment -Model sonnet -Attempt rerun-01
+./run.ps1 -Arm control -Model claude-sonnet-5 -Attempt rerun-01
+./run.ps1 -Arm treatment -Model claude-sonnet-5 -Attempt rerun-01
 ```
 
 For faithful replication, use the exact resolved model ID recorded in successful raw output rather than the moving `sonnet` alias. Reuse that ID for both arms. Record any provider/model availability differences. Each new attempt gets its own directory; the runner refuses to overwrite evidence.
@@ -27,4 +27,4 @@ Both arms have source access. Any gain measures the instruction folder's increme
 
 ## Submission
 
-Read results.md before submitting. Publish only after both arms have genuine raw responses and results accurately report every win, tie, and loss. This local repository has not been published or entered in the competition. Do not include the sheriff PDF or real lead data in this entry.
+The successful comparison is control/run-03 versus treatment/run-02. results.md reports eight accuracy ties, input overhead, and a treatment attribution flaw alongside observed output savings. Earlier failed attempts are preserved. Read results.md and submission-draft.md before submitting. This local repository has not been published or entered in the competition. Do not include the sheriff PDF or real lead data in this entry.
