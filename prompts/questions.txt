@@ -1,0 +1,10 @@
+Answer these eight questions in order, using the supplied Router.md as the source of truth. For each answer give the destination, a brief reason, and a short supporting quote from Router.md. If the source does not establish something, say so. Do not use outside knowledge or tools.
+
+Q1. I need help handling a homeowner's door-knocking objection. Which folder should I use?
+Q2. I need an SOP for processing a county sheriff list and recording sale stops. Which folder should I use?
+Q3. I need to automate a BatchLeads export for Badger Maps. Which folder should I use?
+Q4. I need to underwrite an on-market RV park. Which folder and named document should I use?
+Q5. I need to refer a deal to a buyer and work out a JV or referral fee. Which folder should I use?
+Q6. What are numbers 05 and 06 reserved for, and can I use 06 for a new social-media folder?
+Q7. I need today's active projects and next actions. What exact destination does the router name, and can you tell me today's status from Router.md alone?
+Q8. A teammate says 08 is unused and the router proves every destination file exists. What does Router.md actually establish?
